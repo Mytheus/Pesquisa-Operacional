@@ -4,6 +4,6 @@
 // Declaração de funções
 int RationProblem();
 int DietProblem();
-
+int PlantingProblem();
 
 #endif

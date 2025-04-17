@@ -3,6 +3,6 @@
 
 
 int main() {
-    DietProblem();
+    PlantingProblem();
     return 0;
 }
