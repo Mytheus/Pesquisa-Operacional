@@ -3,6 +3,6 @@
 
 
 int main() {
-    RationProblem();
+    DietProblem();
     return 0;
 }
