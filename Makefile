@@ -24,7 +24,7 @@ LDFLAGS        := -L$(CPLEX_LIB) -L$(CONCERT_LIB)
 LIBS           := -lilocplex -lconcert -lcplex -lm -lpthread -ldl
 
 # Regras de construção
-.PHONY: all clean
+.PHONY: all clean run
 
 all: $(TARGET)
 
@@ -40,3 +40,7 @@ $(TARGET): $(OBJ)
 clean:
 	@rm -f $(TARGET) $(OBJ)
 	@echo "Clean complete."
+
+run: $(TARGET)
+	@echo "Running $<..."
+	@./$<
