@@ -8,17 +8,30 @@ int RationProblem() {
         // Criar modelo
         IloModel model(env);
         
+        int MAX_CARNES = 10000;
+        int MAX_CEREAIS = 30000;
+        int MAX_AMGS = MAX_CEREAIS/5;
+        int MAX_RE = MAX_CARNES/4;
+
         // Variáveis
-        IloNumVar x(env, 0.0, 40.0, ILOFLOAT, "x");
-        IloNumVar y(env, 0.0, IloInfinity, ILOFLOAT, "y");
+        IloIntVar AMGS(env, 0.0, MAX_AMGS, "AMGS");
+        IloIntVar RE(env, 0.0, MAX_RE, "RE");
         
-        // Função objetivo: Maximizar x + 2y
-        model.add(IloMaximize(env, x + 2*y));
+        //AMGS utiliza 5kg de cereais e 1kg de carne
+        //RE utiliza 2kg de cereais e 4kg de carne
+        //Lucro líquido unidade da ração
+            //AMGS = 20 - (5kg * 1 + 1kg * 4) = 11
+            //RE = 30 - (2kg * 1 + 4kg * 4) = 12
+        
+            // Função objetivo: Maximizar lucro:
+            // AMGS*11 + RE*12
+        model.add(IloMaximize(env, AMGS * 11 + RE * 12));
         
         // Restrições
-        model.add(-x + y <= 20);
-        model.add( x + y <= 60);
-        model.add( x - 3*y <= 0);
+            // Total de cereais: AMGS * 5 + RE * 2 <=30000
+            // Total de carne: AMGS * 1 + RE * 4 <= 10000
+        model.add(AMGS * 5 + RE * 2 <= MAX_CEREAIS);
+        model.add(AMGS * 1 + RE * 4 <= MAX_CARNES);
         
         // Resolver
         IloCplex cplex(model);
@@ -29,8 +42,8 @@ int RationProblem() {
         
         // Resultados
         cout << "Solução ótima = " << cplex.getObjValue() << endl;
-        cout << "x = " << cplex.getValue(x) << endl;
-        cout << "y = " << cplex.getValue(y) << endl;
+        cout << "AMGS = " << cplex.getValue(AMGS) << endl;
+        cout << "RE = " << cplex.getValue(RE) << endl;
     }
     catch (IloException& e) {
         cerr << "Erro CPLEX: " << e << endl;
