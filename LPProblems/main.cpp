@@ -15,7 +15,8 @@ int main() {
         {"DietProblem", DietProblem},
         {"PlantingProblem", PlantingProblem},
         {"PaintProblem", PaintProblem},
-        {"TransportProblem", TransportProblem}
+        {"TransportProblem", TransportProblem},
+        {"MaxFlowProblem", MaxFlowProblem},
     };
     const int NUM_PROBLEMS = PROBLEMS.size();
     // const vector<string> PROBLEMS= {

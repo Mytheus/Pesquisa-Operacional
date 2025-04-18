@@ -7,5 +7,6 @@ int DietProblem();
 int PlantingProblem();
 int PaintProblem();
 int TransportProblem();
+int MaxFlowProblem();
 
 #endif
