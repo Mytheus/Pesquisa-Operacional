@@ -5,5 +5,6 @@
 int RationProblem();
 int DietProblem();
 int PlantingProblem();
+int PaintProblem();
 
 #endif

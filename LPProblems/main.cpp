@@ -10,10 +10,11 @@ int main() {
     const vector<string> PROBLEMS= {
         "RationProblem",
         "DietProblem",
-        "PlantingProblem"
+        "PlantingProblem",
+        "PaintProblem"
     };
     const int NUM_PROBLEMS = PROBLEMS.size();
-    vector<function<void(void)>> functions = {RationProblem, DietProblem, PlantingProblem};
+    vector<function<void(void)>> functions = {RationProblem, DietProblem, PlantingProblem, PaintProblem};
     while (true) {
         int problemChoice;
         cout << "Escolha o problema para executar:\n";
