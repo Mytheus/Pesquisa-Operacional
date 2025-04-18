@@ -5,21 +5,32 @@
 #include <string>
 #include <functional>
 using namespace std;
-
+struct Problem {
+    string name;
+    function<void(void)> func;
+};
 int main() {
-    const vector<string> PROBLEMS= {
-        "RationProblem",
-        "DietProblem",
-        "PlantingProblem",
-        "PaintProblem"
+    const vector<Problem> PROBLEMS = {
+        {"RationProblem", RationProblem},
+        {"DietProblem", DietProblem},
+        {"PlantingProblem", PlantingProblem},
+        {"PaintProblem", PaintProblem},
+        {"TransportProblem", TransportProblem}
     };
     const int NUM_PROBLEMS = PROBLEMS.size();
-    vector<function<void(void)>> functions = {RationProblem, DietProblem, PlantingProblem, PaintProblem};
+    // const vector<string> PROBLEMS= {
+    //     "RationProblem",
+    //     "DietProblem",
+    //     "PlantingProblem",
+    //     "PaintProblem",
+    //     "TransportProblem",
+    // };
+    // vector<function<void(void)>> functions = {RationProblem, DietProblem, PlantingProblem, PaintProblem, TransportProblem};
     while (true) {
         int problemChoice;
         cout << "Escolha o problema para executar:\n";
         for (int i = 0; i < NUM_PROBLEMS; i++) {
-            cout << i + 1 << ". " << PROBLEMS[i] << endl;
+            cout << i + 1 << ". " << PROBLEMS[i].name << endl;
         }
         cout << NUM_PROBLEMS + 1 << ". Sair\n";
         cout << "Digite o número do problema: ";
@@ -35,8 +46,8 @@ int main() {
         }
 
         else {
-            cout << "Executando " << PROBLEMS[problemChoice - 1] << "...\n";
-            functions[problemChoice - 1]();
+            cout << "Executando " << PROBLEMS[problemChoice - 1].name << "...\n";
+            PROBLEMS[problemChoice-1].func();
         }
     }
 }
