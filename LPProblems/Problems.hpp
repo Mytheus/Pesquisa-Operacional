@@ -8,5 +8,6 @@ int PlantingProblem();
 int PaintProblem();
 int TransportProblem();
 int MaxFlowProblem();
+int ScheduleScalingProblem();
 
 #endif
