@@ -9,5 +9,6 @@ int PaintProblem();
 int TransportProblem();
 int MaxFlowProblem();
 int ScheduleScalingProblem();
+int CoverProblem();
 
 #endif
