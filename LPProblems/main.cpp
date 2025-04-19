@@ -21,6 +21,7 @@ int main() {
         {"CoverProblem", CoverProblem},
         {"KnapsackProblem", KnapsackProblem},
         {"PatternProblem", PatternProblem},
+        {"FacilityProblem", FacilityProblem},
     };
     const int NUM_PROBLEMS = PROBLEMS.size();
     // const vector<string> PROBLEMS= {

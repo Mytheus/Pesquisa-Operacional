@@ -12,5 +12,6 @@ int ScheduleScalingProblem();
 int CoverProblem();
 int KnapsackProblem();
 int PatternProblem();
+int FacilityProblem();
 
 #endif
