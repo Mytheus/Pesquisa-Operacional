@@ -13,5 +13,6 @@ int CoverProblem();
 int KnapsackProblem();
 int PatternProblem();
 int FacilityProblem();
+int FrequencyProblem();
 
 #endif
