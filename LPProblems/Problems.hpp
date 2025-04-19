@@ -14,5 +14,6 @@ int KnapsackProblem();
 int PatternProblem();
 int FacilityProblem();
 int FrequencyProblem();
+int MaximumCliqueProblem();
 
 #endif
