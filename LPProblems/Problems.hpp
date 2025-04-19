@@ -10,5 +10,6 @@ int TransportProblem();
 int MaxFlowProblem();
 int ScheduleScalingProblem();
 int CoverProblem();
+int KnapsackProblem();
 
 #endif
