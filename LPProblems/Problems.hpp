@@ -11,5 +11,6 @@ int MaxFlowProblem();
 int ScheduleScalingProblem();
 int CoverProblem();
 int KnapsackProblem();
+int PatternProblem();
 
 #endif
