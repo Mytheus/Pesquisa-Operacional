@@ -55,7 +55,7 @@ int CoverProblem() {
         
         // Resultados
         cout << "Solução ótima = " << cplex.getObjValue() << endl;
-        // Exibir a solução como lista de adjacências
+        // Nós cobertos
         for (int i = 0; i < NUM_NOS; i++) {
             cout << x[i].getName() << ": " << cplex.getValue(x[i]) << endl;
         }

@@ -38,6 +38,7 @@
 /build/
 /bin/
 /dist/
+/obj/
 
 # CMake generated files
 CMakeFiles/

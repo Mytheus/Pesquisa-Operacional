@@ -45,7 +45,7 @@ int KnapsackProblem() {
         
         // Resultados
         cout << "Solução ótima = " << cplex.getObjValue() << endl;
-        // Exibir a solução como lista de adjacências
+        // Itens incluídos na mochila
         for (int i = 0; i < NUM_ITENS; i++) {
             if (cplex.getValue(x[i]) > 0.5) { // Se o item foi incluído
                 cout << "Item incluído: " << i << " Valor: "<< VALORES[i] << " Peso: "<< PESOS[i] << endl;
