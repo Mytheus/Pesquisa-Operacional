@@ -17,13 +17,13 @@ TARGETS := $(addsuffix /solver.out,$(PROJECTS))
 
 # Flags do compilador
 CXX            := g++
-CXXFLAGS       := -O2 -Wall -std=c++11
+CXXFLAGS       := -O2 -Wall -std=c++17
 INCLUDES       := -I$(CPLEX_INC) -I$(CONCERT_INC) -I$(CPLEX_INC)/ilcplex
 LDFLAGS        := -L$(CPLEX_LIB) -L$(CONCERT_LIB)
 LIBS           := -lilocplex -lconcert -lcplex -lm -lpthread -ldl
 
 # Parâmetros padrão para execução
-BP_ARGS ?= -time 60 -s < input.txt
+BP_ARGS ?= -time 10 -s < bin_packing.dat
 LP_ARGS ?= 
 
 # Cria diretório de objetos se não existir
@@ -63,14 +63,24 @@ $(foreach proj,$(PROJECTS),$(eval $(call PROJECT_RULES,$(proj))))
 # Atalhos para compilação
 $(PROJECTS): %: %/solver.out
 
+# Função para encontrar arquivo de input
+define find_input
+$(firstword $(wildcard $(1)/bin_packing.dat bin_packing.dat))
+endef
+
 # Regras de execução
 run-LP: LPProblems/solver.out
-	@echo "Running LPProblems with args: $(LP_ARGS)"
-	@./$< $(LP_ARGS)
+	@echo "Running LPProblems..."
+	@./$<
 
 run-BP: BinPacking/solver.out
-	@echo "Running BinPacking with args: $(BP_ARGS)"
-	@./$< $(BP_ARGS)
+	@$(eval INPUT_FILE := $(call find_input,BinPacking))
+	@if [ -z "$(INPUT_FILE)" ]; then \
+		echo "Erro: Nenhum arquivo input.txt encontrado nem em BinPacking/ nem no diretório raiz"; \
+		exit 1; \
+	fi
+	@echo "Running BinPacking com arquivo de input: $(INPUT_FILE)"
+	@./$< -time 60 -s < "$(INPUT_FILE)"
 
 clean:
 	@rm -rf $(TARGETS) $(OBJ_DIR)
